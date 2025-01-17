@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<%-include('header')-%>
+<body>
+  <div style='overflow-x:hidden;'>
+
+    <!-- header section strats -->
+    <nav class="nav_section"> 
+
+      <div class="imgLogo">
+        <img src="/icon/logo.png" alt="logo de la pagina" width="50">
+      </div>
+
+      <ul class="menu" id="navbar-menu">
+        <li title='Inicio' class="navbar-item"><a href="/main"><i class="fas fa-home"></i><span class='noneSpan'>Inicio</span></a></li>
+        <li title='Cursos' class="navbar-item"><a href="/cursosClient"><i class="fas fa-envelope"></i><span class='noneSpan'>Contacto</span></a></li>
+        <li title='Libros' class="navbar-item"><a href="/librosClient"><i class="fas fa-graduation-cap"></i><span class="s noneSpan">Cursos</span></a></li>
+        <li title='Streaming' class="navbar-item"><a href="/streaming"><i class="fas fa-tv"></i><span class='noneSpan'>Ayuda</span></a></li>
+        <li title='Capacitación' class="navbar-item"><a href="/capacitacion"><i class="fas fa-book"></i><span class='noneSpan'>Politicas</span></a></li>
+      </ul>
+
+      <div class="navbar-toggle" id="navbar-toggle">
+        <img class="imagenMenu" src="/icon/menu.png" alt='icono del menu desplegable'>
+      </div>
+
+    </nav>
+
+    <section class="header">
+
+      <div class="containerImagenFondo">
+        <img data-src="/imagenes/2.avif" class="imagenHeader lazy" alt="fondo del inicio del pa pagina">
+      </div>
+
+      <div class="containerTitulo">
+
+        <h1 id='title'></h1>
+
+        <div class="textoBotones">
+          <p>¡Bienvenidos a Music Record! Las oportunidades están a tu alcance, ¡aprovéchalas al máximo!</p>
+
+          <div class="botonera">
+            <button class="button-89" id='login' role="button">Acceder</button>
+            <button class="button-89" id='register' role="button">Registro</button>
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+    </section>
+
+    <!-- about section -->
+
+    <section class="vision">
+
+      <div class="imagenEjecutivos">
+        <img data-src="/icon/chama.png" class="lazy" alt='ejecutivos global dorado'>
+      </div>
+
+      <div class="infoEjecutivos">
+        <h2>Quienes Somos</h2>
+        <p>Somos Music Record, una comunidad apasionada por la música que busca inspirar y conectar a las personas a través del arte orquestal. Desde nuestra fundación en [2013], nos hemos dedicado a promover el talento musical, apoyando a músicos emergentes y ofreciendo experiencias inolvidables al público a través de nuestros conciertos y proyectos educativos.</p>
+        <div class="btn">
+          <button>Ver mas</button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- service section -->
+    <section class="section-entretenimiento"> 
+
+      <div class="infoEntretenimiento">
+
+        <h2 class="entretenimientoH2">Visión</h2>
+
+        <p>Convertirnos en un referente musical a nivel nacional e internacional, destacándonos por nuestra excelencia artística, innovación en el repertorio y compromiso social. Queremos ser una orquesta que inspire y trascienda generaciones, llevando la magia de la música a cada rincón del mundo.</p>
+
+        <p>Ofrecer experiencias musicales de alta calidad que enriquezcan la vida cultural de nuestra comunidad. Fomentamos el amor por la música clásica y contemporánea, promovemos el desarrollo de jóvenes talentos y trabajamos en proyectos que integran la música como herramienta de impacto social.</p>
+
+        <div id="boton-pago" class="btn">
+          <button>Ver mas</button>
+        </div>
+
+      </div>
+
+      <div class="televisorNetflix">
+        <img data-src="/icon/chamo.png" alt="televisor decorativo netflix" class="lazy">
+      </div>
+
+    </section>
+
+    <section class="textoInfo">
+      <div>
+        <h2>Objetivo General</h2>
+
+        <p>
+         Como objetivo general , buscamos crear un canal de comunicación y trabajo remoto donde los futuros artistas puedan tanto darse a conocer como dar a conocer su trabajo artistico y profesional.
+        </p>
+        
+      </div>
+
+      <div>
+        <h2>Como funciona Music Record</h2>
+        <p>Somos una plataforma que se encarga de preparar y dar oportunidades unicas para emprender en el mundo musical a travez de metodos unicos generados por nuestra empresa</p>
+      </div>
+    </section>
+
+    <section class="contacto">
+
+      <h2>Contactanos</h2>
+
+      <div class="containerFormImg">
+
+        <form class="formularioContacto">
+
+          <label for="">Correo</label>
+          <input type="email" placeholder="   Ingrese correo electronico" id='email' required>
+          <label for="">Nombre</label>
+          <input type="text" placeholder="    Ingrese nombre" id='nombre' required>
+          <label for="">Comentario</label>
+          <input type="text" placeholder="    Ingrese comentario" id='comentario' required>
+
+          <button>Enviar</button>
+
+        </form>
+
+        <div class="containerImagenContacto">
+          <img class="imagenContacto" src="/laptop.avif" alt="">
+        </div>
+
+      </div>
+
+    </section>
+    <!-- end service section -->
+
+<!-- gallery section -->
+<div class='carrusel-p' id='carrusel-pp'>
+  <h2 id='libros' class='h22'>Conciertos <span style='color:rgb(255, 183, 67)'> En vivo</span></h2>
+
+  <div class='carrusel-list' id='carrusel-list'>
+
+   <button class="carrusel-arrow carrusel-prev" id="button-prev" data-button="button-prev"
+   onclick="app.processingButton(event)">
+   <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-left"
+   class="svg-inline--fa fa-chevron-left fa-w-10" role="img" xmlns="http://www.w3.org/2000/svg"
+   viewBox="0 0 320 512">
+
+   <path fill="currentColor"
+   d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z">
+ </path>
+</svg>
+</button>
+
+<div class='carrusel-track' id='track'>
+
+  <% files.forEach(img =>{ %>
+  <div class='carrusel'>
+    <div>
+      <a href="/">
+        <!--<h4 class='h4'><small>Imagen</small>Mas</h4>-->
+        <picture>
+          <img class="img_box lazy" data-src="/imagenes/<%=img%>" alt="libro">
+        </picture>
+      </a>
+    </div>
+  </div>
+  <% }) %>
+
+
+
+</div>
+
+<button class="carrusel-arrow carrusel-next" id="button-next" data-button="button-next"
+onclick="app.processingButton(event)">
+<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-right"
+class="svg-inline--fa fa-chevron-right fa-w-10" role="img" xmlns="http://www.w3.org/2000/svg"
+viewBox="0 0 320 512">
+<path fill="currentColor"
+d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z">
+</path>
+</svg>
+</button>
+
+
+</div>
+
+</div> 
+
+<!-- hexagono-->
+
+
+<!---------------------------------------------->
+</div>
+
+
+<!--carrusel promotores-->
+<!--AQUI-->
+<!-- end info_section -->
+<section class="informacion">
+
+  <div class="divInformacion">
+    <h2>¡INFORMACIÓN IMPORTANTE!<i class="fas fa-arrow-alt-up"></i></h2>
+  </div>
+
+  <div class="divInformacionText">
+   <p>Programas y Proyectos Conciertos Educativos: Sesiones interactivas donde los asistentes aprenden sobre la historia musical.</p>
+
+   <p>Orquesta Juvenil: Una plataforma para jóvenes músicos que aspiran a formar parte del mundo profesional.</p>
+
+   <p>Clases Magistrales: Talleres impartidos por músicos destacados para estudiantes avanzados.</p>
+   <p>Música en la Comunidad: Conciertos gratuitos en hospitales, escuelas y centros comunitarios.</p>
+
+ </div>
+
+ <div class="divFooter">
+
+  <div class="sectionFooter">
+    <h2>Redes Sociales</h2>
+    <ul class="list2">
+      <li><span>Facebook</span><span><a href="https://t.me/+dUcjB1pXQ08yY2Rh"><i class="fab fa-facebook" style="font-size: 24px; color: #1877F2;"></i></a></span></li>
+      <li><span>Instagram</span><span><a href="https://wa.me/message/PTU4KTMVFOHEB1"><i class="fab fa-instagram" style="font-size: 24px; color: #E1306C;"></i></a></span></li>
+      <li><span>Whatsapp</span><span><a href="https://wa.me/message/PTU4KTMVFOHEB1"><i class="fab fa-whatsapp" style="font-size: 24px; color: #25D366;"></i></a></span></li>
+      <li><span>Correo</span><span><a href=""><i class="fas fa-envelope" style="font-size: 24px; color: #D44638;"></i></a></span></li>
+    </ul>
+  </div>
+
+  <div class="sectionFooter">
+    <h2>Terminos y condiciones</h2>
+    <ul class="list2">
+      <li><span>Politicas de privacidad</span><span><i class="fas fa-user-shield"></i></span></li>
+      <li><span>condiciones del servicio</span><span><i class="fas fa-handshake"></i></span></li>
+      <li><span>Derechos de autor</span><span><i class="fas fa-copyright"></i></span></li>
+      <li><span>Terminos</span><span><i class="fas fa-file-contract"></i></span></li>
+    </ul>
+  </div>
+
+  <div class="sectionFooter">
+    <h2>Servicios</h2>
+    <ul class="list2">
+      <li><span>Preguntas frecuentes</span><span><i class="fas fa-question-circle"></i></span></li>
+      <li><span>Material de apoyo</span><span><i class="fas fa-book"></i></span></li>
+      <li><span>ChatBot</span><span><i class="fas fa-robot"></i></span></li>
+    </ul>
+  </div>
+
+</div>
+
+
+</section>
+
+<!-- footer section -->
+<section class="container-fluid footer_section">
+  <p style='color:rgb(255, 183, 67)'>
+    &copy; 2024 All Rights Reserved By
+    <a style='color:rgb(255, 183, 67)' href="#">Music Record</a>
+  </p>
+</section>
+<!-- footer section -->
+<script type="text/javascript" src='/js/desplazamiento.js'></script>
+<script type="text/javascript" src='js/lazyLoadIndex.js'></script>
+<script type="text/javascript" src='/js/efectWrite.js'></script>
+<script type="text/javascript" src='/js/carrusel.js'></script>
+<script type="text/javascript" src='/js/insertIframe.js'></script>
+<script type="text/javascript" src='/js/menuDesplegable.js'></script>
+<script type="text/javascript" src='/js/botones.js'></script>
+<script>
+  const formularioContacto = document.querySelector('.formularioContacto');
+
+  formularioContacto.addEventListener('submit',e=>{
+    e.preventDefault();
+
+    const email = document.querySelector('#email').value;
+    const nombre = document.querySelector('#nombre').value;
+    const comentario = document.querySelector('#comentario').value;
+
+    fetch('/contactosPost',{
+      method:"POST",
+      headers:{
+        "Content-type":"application/json"
+      },
+      body:JSON.stringify({email,nombre,comentario})
+    })
+    .then(res=>res.json())
+    .then(res=>{
+      if(res.status){
+       Swal.fire('Comentario Enviado con exito')
+     }else{
+      Swal.fire('Se genero un error al enviar comentario');
+    }
+  });
+  });
+</script>
+</div>
+</body>
+
+</html>

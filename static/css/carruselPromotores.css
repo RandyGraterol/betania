@@ -1,0 +1,1150 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins|Lato|Roboto+Mono&display=swap");
+#carousel-wrapper.anim-next,#other-carousel-wrapper.anim-next{
+  pointer-events: none;
+}
+#carousel-wrapper.anim-next #current-option-text1,#other-carousel-wrapper.anim-next #other-current-option-text1{
+  animation: next-text 0.65s 0.085s;
+}
+#carousel-wrapper.anim-next #current-option-text2,#other-carousel-wrapper.anim-next #other-current-option-text2{
+  animation: next-text 0.65s 0.085s;
+}
+#carousel-wrapper.anim-next #previous-option,#other-carousel-wrapper.anim-next #other-previous-option{
+  animation: next-top-arrow 0.65s 0.085s;
+}
+#carousel-wrapper.anim-next #next-option,#other-carousel-wrapper.anim-next #other-next-option{
+  animation: next-bottom-arrow 0.65s 0.085s;
+}
+#carousel-wrapper.anim-next #image,#other-carousel-wrapper.anim-next #other-image{
+  animation: next-image 0.65s 0.085s;
+}
+#carousel-wrapper.anim-previous,#other-carousel-wrapper.anim-previous{
+  pointer-events: none;
+}
+#carousel-wrapper.anim-previous #current-option-text1,#other-carousel-wrapper.anim-previous #other-current-option-text1{
+  animation: previous-text 0.65s 0.085s;
+}
+#carousel-wrapper.anim-previous #current-option-text2,#other-carousel-wrapper.anim-previous #other-current-option-text2{
+  animation: previous-text 0.65s 0.085s;
+}
+#carousel-wrapper.anim-previous #previous-option,#other-carousel-wrapper.anim-previous #other-previous-option {
+  animation: previous-top-arrow 0.65s 0.085s;
+}
+#carousel-wrapper.anim-previous #next-option,#other-carousel-wrapper.anim-previous #other-next-option{
+  animation: previous-bottom-arrow 0.65s 0.085s;
+}
+#carousel-wrapper.anim-previous #image,#other-carousel-wrapper.anim-previous #other-image{
+  animation: previous-image 0.65s 0.085s;
+}
+@keyframes previous-text {
+  50%, 55% {
+    transform: translate(0%, 390px);
+  }
+  to {
+    transform: translate(0%, 380px);
+  }
+}
+@keyframes previous-top-arrow {
+  50% {
+    transform: translate(310px, 53px);
+  }
+}
+@keyframes previous-bottom-arrow {
+  50% {
+    transform: translate(310px, -47px) rotate(180deg);
+  }
+}
+@keyframes previous-image {
+  0% {
+    transform: translate(140px, 0) scale(1);
+    opacity: 1;
+  }
+  70% {
+    transform: translate(140px, 0) scale(1.1);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(140px, 0) scale(1);
+    opacity: 1;
+  }
+}
+@keyframes next-text {
+  50%, 55% {
+    transform: translate(0%, -390px);
+  }
+  to {
+    transform: translate(0%, -380px);
+  }
+}
+@keyframes next-top-arrow {
+  50% {
+    transform: translate(310px, 47px);
+  }
+}
+@keyframes next-bottom-arrow {
+  50% {
+    transform: translate(310px, -53px) rotate(180deg);
+  }
+}
+@keyframes next-image {
+  0% {
+    transform: translate(140px, 0) scale(1);
+    opacity: 1;
+  }
+  70% {
+    transform: translate(140px, 0) scale(1.1);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(140px, 0) scale(1);
+    opacity: 1;
+  }
+}
+#carousel-wrapper #image,#other-carousel-wrapper #other-image{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+ background-size: cover;
+ background-position: center;
+ background-repeat: no-repeat;
+ background:rgb(0,0,0);
+}
+#img,#img2{
+  background-size:cover;
+  background-position:center;
+  background-repeat: repeat;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  border-radius:20px;
+  border:5px solid white;
+}
+
+/* Móviles pequeños (320px - 374px) */
+@media (max-width: 374px) {
+    /* Aquí van tus estilos específicos para móviles pequeños */
+         span{
+  color:white;
+}
+.promotores{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap:1rem;
+  padding:1rem;
+  width:100%;
+  height:100%;
+}
+#carousel-wrapper,#other-carousel-wrapper{
+  position: relative;
+  width: 95%;
+  height:400px;
+  display: flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items: center;
+  overflow: hidden;
+  gap:.1rem;
+  border-radius:20px;
+  border:4px solid black;
+  background-image:url('/img/fondoweb2.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  backdrop-filter:blur(10px) saturate(150%) contrast(120%);
+}
+#carousel-wrapper:before,#other-carousel-wrapper:before{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  background: rgba(0,0,0,.4);
+ 
+}
+#carousel-wrapper #menu,#other-carousel-wrapper #other-menu{
+  height:100%;
+  width: 100%;
+  overflow: hidden;
+  font-weight: 700;
+  line-height: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  transition: all 0.6s ease-in-out;
+  border-radius:20px;
+}
+#carousel-wrapper #menu #current-option,#other-carousel-wrapper #other-menu #other-current-option{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  align-items: flex-start;
+  overflow: hidden;
+}
+#carousel-wrapper #menu #current-option #current-option-text1,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text1{
+  font-size: 1.2rem;
+  width:100%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top:1rem;
+}
+#carousel-wrapper #menu #current-option #current-option-text1::before,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text1::before{
+  content: attr(data-next-text);
+  position: absolute;
+  transform: translate(0%, 380px);
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+#carousel-wrapper #menu #current-option #current-option-text1::after,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text1::after{
+  content: attr(data-previous-text);
+  position: absolute;
+  transform: translate(0%, -380px);
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+#carousel-wrapper #menu #current-option #current-option-text2,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text2{
+  font-size: 0.8rem;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding:2rem;
+}
+#carousel-wrapper #menu #current-option #current-option-text2::before,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text2::before{
+  content: attr(data-next-text);
+  position: absolute;
+  transform: translate(0%, 380px);
+  width: 100%;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+#carousel-wrapper #menu #current-option #current-option-text2::after,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text2::after{
+  content: attr(data-previous-text);
+  position: absolute;
+  transform: translate(0%, -380px);
+  width: 100%;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+#carousel-wrapper #menu #previous-option,#other-carousel-wrapper #other-menu #other-previous-option{
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: absolute;
+  transform: translate(110px, 50px);
+  color:black;
+  border-radius:50%;
+  border: none;
+}
+#carousel-wrapper #menu #next-option,#other-carousel-wrapper #other-menu #other-next-option{
+  width:1.5rem;
+  height:1.5rem;
+  border:none;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  cursor:pointer;
+  font-size:1.5rem;
+  position:absolute;
+  transform:translate(110px, -50px);
+  border-radius:50%;
+}
+.flechas{
+  width:30px;
+}
+#carousel-wrapper #image,#other-carousel-wrapper #other-image{
+  height:160px;
+  width:190px;
+  z-index:101;
+  position:absolute;
+  transform:translate(-10px,0);
+  border-radius:30px;
+}
+
+}
+/* Móviles medianos (375px - 414px) */
+@media (min-width: 375px) and (max-width: 414px) {
+    /* Aquí van tus estilos específicos para móviles medianos */
+    /* Aquí van tus estilos específicos para móviles grandes */
+    /*REDMI NOTE 13 PRO PLUS*/
+     span{
+  color:white;
+}
+.promotores{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap:1rem;
+  padding:1rem;
+  width:100%;
+  height:100%;
+}
+#carousel-wrapper,#other-carousel-wrapper{
+  position: relative;
+  width: 95%;
+  height:400px;
+  display: flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items: center;
+  overflow: hidden;
+  gap:.1rem;
+  border-radius:20px;
+  border:4px solid black;
+  background-image:url('/img/fondoweb2.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  backdrop-filter:blur(10px) saturate(150%) contrast(120%);
+}
+#carousel-wrapper:before,#other-carousel-wrapper:before{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  background: rgba(0,0,0,.4);
+ 
+}
+#carousel-wrapper #menu,#other-carousel-wrapper #other-menu{
+  height:100%;
+  width: 100%;
+  overflow: hidden;
+  font-weight: 700;
+  line-height: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  transition: all 0.6s ease-in-out;
+  border-radius:20px;
+}
+#carousel-wrapper #menu #current-option,#other-carousel-wrapper #other-menu #other-current-option{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  align-items: flex-start;
+  overflow: hidden;
+}
+#carousel-wrapper #menu #current-option #current-option-text1,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text1{
+  font-size: 1.2rem;
+  width:100%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top:1rem;
+}
+#carousel-wrapper #menu #current-option #current-option-text1::before,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text1::before{
+  content: attr(data-next-text);
+  position: absolute;
+  transform: translate(0%, 380px);
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+#carousel-wrapper #menu #current-option #current-option-text1::after,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text1::after{
+  content: attr(data-previous-text);
+  position: absolute;
+  transform: translate(0%, -380px);
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+#carousel-wrapper #menu #current-option #current-option-text2,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text2{
+  font-size: 0.8rem;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding:2rem;
+}
+#carousel-wrapper #menu #current-option #current-option-text2::before,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text2::before{
+  content: attr(data-next-text);
+  position: absolute;
+  transform: translate(0%, 380px);
+  width: 100%;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+#carousel-wrapper #menu #current-option #current-option-text2::after,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text2::after{
+  content: attr(data-previous-text);
+  position: absolute;
+  transform: translate(0%, -380px);
+  width: 100%;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+#carousel-wrapper #menu #previous-option,#other-carousel-wrapper #other-menu #other-previous-option{
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: absolute;
+  transform: translate(120px, 50px);
+  color:black;
+  border-radius:50%;
+}
+#carousel-wrapper #menu #next-option,#other-carousel-wrapper #other-menu #other-next-option{
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size:1.5rem;
+  position: absolute;
+  transform: translate(120px, -50px);
+  border-radius:50%;
+}
+.flechas{
+  width:30px;
+}
+#carousel-wrapper #image,#other-carousel-wrapper #other-image{
+  height: 180px;
+  width: 200px;
+  z-index: 101;
+  position: absolute;
+  transform: translate(-5px,0);
+  border-radius:30px;
+  object-fit: contain; /* Ajuste de la imagen para que se ajuste en el contenedor */
+}
+}
+/* Móviles grandes (415px - 599px)*/
+@media (min-width: 415px) and (max-width: 599px) {
+    /* Aquí van tus estilos específicos para móviles grandes */
+    /* Aquí van tus estilos específicos para móviles grandes */
+    /*IPHONE 15 PRO MAX*/
+    span{
+  color:white;
+}
+.promotores{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap:1rem;
+  padding:1rem;
+  width:100%;
+  height:100%;
+}
+#carousel-wrapper,#other-carousel-wrapper{
+  position: relative;
+  width: 95%;
+  height:400px;
+  display: flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items: center;
+  overflow: hidden;
+  gap:.1rem;
+  border-radius:20px;
+  border:4px solid black;
+  background-image:url('/img/fondoweb2.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  backdrop-filter:blur(10px) saturate(150%) contrast(120%);
+}
+#carousel-wrapper:before,#other-carousel-wrapper:before{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  background: rgba(0,0,0,.4);
+ 
+}
+#carousel-wrapper #menu,#other-carousel-wrapper #other-menu{
+  height:100%;
+  width: 100%;
+  overflow: hidden;
+  font-weight: 700;
+  line-height: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  transition: all 0.6s ease-in-out;
+  border-radius:20px;
+}
+#carousel-wrapper #menu #current-option,#other-carousel-wrapper #other-menu #other-current-option{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  align-items: flex-start;
+  overflow: hidden;
+}
+#carousel-wrapper #menu #current-option #current-option-text1,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text1{
+  font-size: 1.2rem;
+  width:100%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top:1rem;
+}
+#carousel-wrapper #menu #current-option #current-option-text1::before,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text1::before{
+  content: attr(data-next-text);
+  position: absolute;
+  transform: translate(0%, 380px);
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+#carousel-wrapper #menu #current-option #current-option-text1::after,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text1::after{
+  content: attr(data-previous-text);
+  position: absolute;
+  transform: translate(0%, -380px);
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+#carousel-wrapper #menu #current-option #current-option-text2,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text2{
+  font-size: 0.8rem;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding:2rem;
+}
+#carousel-wrapper #menu #current-option #current-option-text2::before,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text2::before{
+  content: attr(data-next-text);
+  position: absolute;
+  transform: translate(0%, 380px);
+  width: 100%;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+#carousel-wrapper #menu #current-option #current-option-text2::after,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text2::after{
+  content: attr(data-previous-text);
+  position: absolute;
+  transform: translate(0%, -380px);
+  width: 100%;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+#carousel-wrapper #menu #previous-option,#other-carousel-wrapper #other-menu #other-previous-option{
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: absolute;
+  transform: translate(140px, 50px);
+  color:black;
+  border-radius:50%;
+}
+#carousel-wrapper #menu #next-option,#other-carousel-wrapper #other-menu #other-next-option{
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size:1.5rem;
+  position: absolute;
+  transform: translate(140px, -50px);
+  border-radius:50%;
+}
+.flechas{
+  width:30px;
+}
+#carousel-wrapper #image,#other-carousel-wrapper #other-image{
+  height: 200px;
+  width: 230px;
+  z-index: 101;
+  position: absolute;
+  transform: translate(0,0);
+  border-radius:30px;
+}
+}
+/* Tabletas en orientación vertical (600px - 767px) */
+@media (min-width: 600px) and (max-width: 767px) {
+    /* Aquí van tus estilos específicos para tabletas en orientación vertical*/
+    /* Aquí van tus estilos específicos para móviles grandes */
+}
+/* Tabletas en orientación horizontal (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+/* Aquí van tus estilos específicos para móviles grandes */
+span{
+  color:white;
+}
+.promotores{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:1rem;
+  padding:1rem;
+  width:100%;
+  height:100%;
+}
+#carousel-wrapper,#other-carousel-wrapper{
+  position: relative;
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction:row;
+  justify-content:flex-start;
+  align-items: center;
+  overflow: hidden;
+  gap:.1rem;
+  border-radius:20px;
+  border:4px solid black;
+  background-image:url('/img/fondoweb2.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  backdrop-filter:blur(10px) saturate(150%) contrast(120%);
+}
+#carousel-wrapper:before,#other-carousel-wrapper:before{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  background: rgba(0,0,0,.4);
+ 
+}
+#carousel-wrapper #menu,#other-carousel-wrapper #other-menu{
+  height: 300px;
+  width: 660px;
+  overflow: hidden;
+  font-weight: 700;
+  line-height: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  transition: all 0.6s ease-in-out;
+  border-radius:20px;
+}
+#carousel-wrapper #menu #current-option,#other-carousel-wrapper #other-menu #other-current-option{
+  position: relative;
+  width: 60%;
+  height: 100%;
+  transform: translate(-25%, 0%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+#carousel-wrapper #menu #current-option #current-option-text1,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text1{
+  font-size: 1.2rem;
+  line-height: 3rem;
+  width: 220px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+#carousel-wrapper #menu #current-option #current-option-text1::before,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text1::before{
+  content: attr(data-next-text);
+  position: absolute;
+  transform: translate(0%, 380px);
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+#carousel-wrapper #menu #current-option #current-option-text1::after,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text1::after{
+  content: attr(data-previous-text);
+  position: absolute;
+  transform: translate(0%, -380px);
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+#carousel-wrapper #menu #current-option #current-option-text2,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text2{
+  font-size: 0.8rem;
+  width: 220px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+#carousel-wrapper #menu #current-option #current-option-text2::before,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text2::before{
+  content: attr(data-next-text);
+  position: absolute;
+  transform: translate(0%, 380px);
+  width: 100%;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+#carousel-wrapper #menu #current-option #current-option-text2::after,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text2::after{
+  content: attr(data-previous-text);
+  position: absolute;
+  transform: translate(0%, -380px);
+  width: 100%;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+#carousel-wrapper #menu #previous-option,#other-carousel-wrapper #other-menu #other-previous-option{
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: absolute;
+  transform: translate(200px, 50px);
+  color:black;
+  border-radius:50%;
+}
+#carousel-wrapper #menu #next-option,#other-carousel-wrapper #other-menu #other-next-option{
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size:1.5rem;
+  position: absolute;
+  transform: translate(200px, -50px);
+  border-radius:50%;
+}
+.flechas{
+  width:30px;
+}
+#carousel-wrapper #image,#other-carousel-wrapper #other-image{
+  height: 170px;
+  width: 170px;
+  z-index: 101;
+  position: absolute;
+  transform: translate(230px, 0);
+  border-radius:30px;
+}
+}
+/* Tabletas grandes o dispositivos pequeños de escritorio (1025px - 1279px) */
+@media (min-width: 1025px) and (max-width: 1279px) {
+    /* Aquí van tus estilos específicos para tabletas grandes o dispositivos pequeños de escritorio */
+/* styles.css */
+span{
+  color:white;
+}
+.promotores{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:1rem;
+  padding:1rem;
+  width:100%;
+  height:100%;
+}
+#carousel-wrapper,#other-carousel-wrapper{
+  position: relative;
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  gap:.1rem;
+  border-radius:20px;
+  border:4px solid black;
+  background-image:url('/img/fondoweb2.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  backdrop-filter:blur(10px) saturate(150%) contrast(120%);
+}
+#carousel-wrapper:before,#other-carousel-wrapper:before{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  background: rgba(0,0,0,.4);
+ 
+}
+#carousel-wrapper #menu,#other-carousel-wrapper #other-menu{
+  height: 300px;
+  width: 730px;
+  overflow: hidden;
+  font-weight: 700;
+  line-height: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  transition: all 0.6s ease-in-out;
+  border-radius:20px;
+}
+#carousel-wrapper #menu #current-option,#other-carousel-wrapper #other-menu #other-current-option{
+  position: relative;
+  width: 60%;
+  height: 100%;
+  transform: translate(-25%, 0%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+#carousel-wrapper #menu #current-option #current-option-text1,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text1{
+  font-size: 1.6rem;
+  line-height: 3rem;
+  width: 220px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+#carousel-wrapper #menu #current-option #current-option-text1::before,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text1::before{
+  content: attr(data-next-text);
+  position: absolute;
+  transform: translate(0%, 380px);
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+#carousel-wrapper #menu #current-option #current-option-text1::after,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text1::after{
+  content: attr(data-previous-text);
+  position: absolute;
+  transform: translate(0%, -380px);
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+#carousel-wrapper #menu #current-option #current-option-text2,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text2{
+  font-size: 0.8rem;
+  width: 220px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+#carousel-wrapper #menu #current-option #current-option-text2::before,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text2::before{
+  content: attr(data-next-text);
+  position: absolute;
+  transform: translate(0%, 380px);
+  width: 100%;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+#carousel-wrapper #menu #current-option #current-option-text2::after,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text2::after{
+  content: attr(data-previous-text);
+  position: absolute;
+  transform: translate(0%, -380px);
+  width: 100%;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+#carousel-wrapper #menu #previous-option,#other-carousel-wrapper #other-menu #other-previous-option{
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: absolute;
+  transform: translate(250px, 50px);
+  color:black;
+  border-radius:50%;
+}
+#carousel-wrapper #menu #next-option,#other-carousel-wrapper #other-menu #other-next-option{
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size:1.5rem;
+  position: absolute;
+  transform: translate(250px, -50px);
+  border-radius:50%;
+}
+.flechas{
+  width:30px;
+}
+#carousel-wrapper #image,#other-carousel-wrapper #other-image{
+  height: 200px;
+  width: 200px;
+  z-index: 101;
+  position: absolute;
+  transform: translate(120px, 0);
+  border-radius:30px;
+}
+}
+/* Dispositivos de pantalla grande (1280px en adelante) */
+@media (min-width: 1280px) {
+    /* Aquí van tus estilos específicos para dispositivos de pantalla grande */
+/* styles.css */
+span{
+  color:white;
+}
+.promotores{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:1rem;
+  padding:1rem;
+  width:100%;
+  height:100%;
+}
+#carousel-wrapper,#other-carousel-wrapper{
+  position: relative;
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  gap:.1rem;
+  border-radius:20px;
+  border:4px solid black;
+  background-image:url('/img/fondoweb2.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  backdrop-filter:blur(10px) saturate(150%) contrast(120%);
+}
+#carousel-wrapper:before,#other-carousel-wrapper:before{
+  content:"";
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  background: rgba(0,0,0,.4);
+ 
+}
+#carousel-wrapper #menu,#other-carousel-wrapper #other-menu{
+  height: 380px;
+  width: 820px;
+  overflow: hidden;
+  font-weight: 700;
+  line-height: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  transition: all 0.6s ease-in-out;
+  border-radius:20px;
+}
+#carousel-wrapper #menu #current-option,#other-carousel-wrapper #other-menu #other-current-option{
+  position: relative;
+  width: 90%;
+  height: 100%;
+  transform: translate(-25%, 0%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+#carousel-wrapper #menu #current-option #current-option-text1,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text1{
+  font-size: 1.6rem;
+  line-height: 3rem;
+  width: 220px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+#carousel-wrapper #menu #current-option #current-option-text1::before,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text1::before{
+  content: attr(data-next-text);
+  position: absolute;
+  transform: translate(0%, 380px);
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+#carousel-wrapper #menu #current-option #current-option-text1::after,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text1::after{
+  content: attr(data-previous-text);
+  position: absolute;
+  transform: translate(0%, -380px);
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+#carousel-wrapper #menu #current-option #current-option-text2,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text2{
+  font-size: 0.8rem;
+  width: 220px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+#carousel-wrapper #menu #current-option #current-option-text2::before,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text2::before{
+  content: attr(data-next-text);
+  position: absolute;
+  transform: translate(0%, 380px);
+  width: 100%;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+#carousel-wrapper #menu #current-option #current-option-text2::after,#other-carousel-wrapper #other-menu #other-current-option #other-current-option-text2::after{
+  content: attr(data-previous-text);
+  position: absolute;
+  transform: translate(0%, -380px);
+  width: 100%;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+#carousel-wrapper #menu #previous-option,#other-carousel-wrapper #other-menu #other-previous-option{
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: absolute;
+  transform: translate(280px, 50px);
+  color:black;
+  
+  border-radius:50%;
+}
+#carousel-wrapper #menu #next-option,#other-carousel-wrapper #other-menu #other-next-option{
+  width: 1.5rem;
+  height: 1.5rem;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size:1.5rem;
+  position: absolute;
+  transform: translate(280px, -50px);
+  border-radius:50%;
+}
+.flechas{
+  width:30px;
+}
+#carousel-wrapper #image,#other-carousel-wrapper #other-image{
+  height: 240px;
+  width: 240px;
+  z-index: 101;
+  position: absolute;
+  transform: translate(120px, 0);
+  border-radius:30px;
+}
+}
+

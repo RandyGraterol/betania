@@ -1,0 +1,129 @@
+/*---CARRUSEL----*/
+.h22{
+  margin-bottom:3rem;
+  color:white;
+  margin-top:2rem ;
+}
+#h22{
+  color:black;
+}
+#carrusel-p,#carrusel-pp{
+  position: relative;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-image:url('/img/fondoweb3.png');
+  background-size: cover;
+   background-position: center center;
+   background-attachment: fixed;
+  padding-bottom:3rem;
+}
+#carrusel-pp{
+  border-top:3px solid rgb(255,255,255);
+}
+
+#carrusel-p::before,#carrusel-pp::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color:rgba(0, 0, 0,.8); /* Color negro translúcido */
+  backdrop-filter: blur(4px);
+
+}
+.carrusel-list{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width:fit-content;/*?????*/
+  height:304px;
+  padding:10px 0px;
+  margin:0px auto;
+  max-width: 90vw;
+  overflow: hidden;
+}
+.carrusel-track{
+  position:relative;
+  top:0;
+  left:0;
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  gap:.5rem;
+  transition: .5s ease-in-out;
+}
+.carrusel{
+  position:relative;
+  width:210px;
+  padding:0 18px;
+  float: left;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.h4{
+  position: absolute;
+  z-index:1;
+  font-size: 20px;
+  line-height:20px;
+  color:white;
+  padding:10px;
+} 
+.h4 small{
+  font-size:20px;
+  display:block;
+}
+.carrusel a{
+  width:100%;
+  height:100%;
+}
+.carrusel a img{
+  object-fit: cover;/*??????*/
+  height:290px;
+  width:210px;
+  border-radius:10px;
+  box-shadow:0 2px 5px 0 rgba(0,0,0,.5);
+  transition:.3s ease-in-out;
+  border: 5px solid white;
+}
+@media(max-width:768px){
+
+  .carrusel a img{
+    width: 200px !important;
+    height:250px !important;
+  }
+}
+
+.carrusel-arrow{
+  border-radius:30px;
+  background:white;
+  position: absolute;
+  z-index:4;
+  width:48px;
+  height: 48px;
+  text-align: center;
+  border:0;
+  cursor:pointer;
+}
+
+.carrusel-arrow:focus{
+  outline:0;/*???????*/
+}
+
+.carrusel-arrow svg{
+  width: 12px;
+  height: 100%;
+  color:rgba(0,0,0,.7);
+}
+.carrusel-prev{
+  left:0;
+}
+.carrusel-next{
+  right:0;
+}

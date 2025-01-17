@@ -1,0 +1,177 @@
+*{
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+}.containeR{
+	backdrop-filter:saturate(150%);
+	border-top:2px solid rgb(255,255,255);
+}
+.slidee .item img{
+	border:3px solid rgb(59,59,59);
+}
+/* Móviles pequeños (320px - 374px) */
+@media (max-width: 374px) {
+    /* Aquí van tus estilos específicos para móviles pequeños */
+    /*IPHONE 15 PRO MAX*/
+.containeR{
+	position:relative;
+	padding:.5rem;
+}.slidee{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow:hidden;
+}.slidee .item{
+	padding:.4rem;
+	transition:all .5s;
+	cursor:pointer;
+}.slidee .item img{
+	width:50px;
+	height:50px;
+	border-radius:50%;
+}
+.slidee .item:hover{
+	transform:scale(1.2);
+} 
+}
+/* Móviles medianos (375px - 414px) */
+@media (min-width: 375px) and (max-width: 414px) {
+    /* Aquí van tus estilos específicos para móviles medianos */
+    /* Aquí van tus estilos específicos para móviles grandes */
+    /*REDMI NOTE 13 PRO PLUS*/
+     /*IPHONE 15 PRO MAX*/
+.containeR{
+	position:relative;
+	padding:.5rem;
+}.slidee{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow:hidden;
+	width: 100%;
+}.slidee .item{
+	padding:.6rem;
+	transition:all .5s;
+	cursor:pointer;
+}.slidee .item img{
+	width:50px;
+	height:50px;
+	border-radius:50%;
+}
+.slidee .item:hover{
+	transform:scale(1.2);
+} 
+}
+/* Móviles grandes (415px - 599px)*/
+@media (min-width: 415px) and (max-width: 599px) {
+    /* Aquí van tus estilos específicos para móviles grandes */
+    /* Aquí van tus estilos específicos para móviles grandes */
+    /*IPHONE 15 PRO MAX*/
+.containeR{
+	position:relative;
+	padding:.5rem;
+}.slidee{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow:hidden;
+}.slidee .item{
+	padding:1rem;
+	transition:all .5s;
+	cursor:pointer;
+}.slidee .item img{
+	width:50px;
+	height:50px;
+	border-radius:50%;
+}
+.slidee .item:hover{
+	transform:scale(1.2);
+} 
+
+}
+/* Tabletas en orientación vertical (600px - 767px) */
+@media (min-width: 600px) and (max-width: 767px) {
+    /* Aquí van tus estilos específicos para tabletas en orientación vertical*/
+    /* Aquí van tus estilos específicos para móviles grandes */
+
+}
+/* Tabletas en orientación horizontal (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+/* Aquí van tus estilos específicos para móviles grandes */
+.containeR{
+	position:relative;
+	padding:.5rem;
+}.slidee{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap:1rem;
+	overflow:hidden;
+}.slidee .item{
+	padding:1rem;
+	transition:all .5s;
+	cursor:pointer;
+}.slidee .item img{
+	width:70px;
+	height:70px;
+	border-radius:50%;
+}
+.slidee .item:hover{
+	transform:scale(1.2);
+} 
+
+}
+/* Tabletas grandes o dispositivos pequeños de escritorio (1025px - 1279px) */
+@media (min-width: 1025px) and (max-width: 1279px) {
+    /* Aquí van tus estilos específicos para tabletas grandes o dispositivos pequeños de escritorio */
+/* styles.css */
+.containeR{
+	position:relative;
+	padding:.5rem;
+}.slidee{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap:1rem;
+	overflow:hidden;
+}.slidee .item{
+	padding:1rem;
+	transition:all .5s;
+	cursor:pointer;
+}.slidee .item img{
+	width:100px;
+	height:100px;
+	border-radius:50%;
+}
+.slidee .item:hover{
+	transform:scale(1.2);
+} 
+
+}
+/* Dispositivos de pantalla grande (1280px en adelante) */
+@media (min-width: 1280px) {
+    /* Aquí van tus estilos específicos para dispositivos de pantalla grande */
+/* styles.css */
+.containeR{
+	position:relative;
+	padding:.5rem;
+}.slidee{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap:1rem;
+	overflow:hidden;
+}.slidee .item{
+	padding:1rem;
+	transition:all .5s;
+	cursor:pointer;
+}.slidee .item img{
+	width:100px;
+	height:100px;
+	border-radius:50%;
+}
+.slidee .item:hover{
+	transform:scale(1.2);
+}   
+}
+
