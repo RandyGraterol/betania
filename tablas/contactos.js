@@ -23,6 +23,10 @@ const Contacto = sequelize.define('Contacto',{
 	ip:{
 		type:DataTypes.STRING(20),
 		allowNull:false
+	},
+	country:{
+	type:DataTypes.STRING(20),
+	allowNull:false	
 	}
 },{timestamps:true,freezeTableName:true});
 

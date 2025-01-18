@@ -123,6 +123,9 @@
           <label for="">Comentario</label>
           <input type="text" placeholder="    Ingrese comentario" id='comentario' required>
 
+           <div class="captcha-container">
+          <div class="g-recaptcha" data-sitekey="6LfRArsqAAAAAM48Xh4ZLN8g66ASBA1ob4_uQTd0"></div>
+          </div>
           <button>Enviar</button>
 
         </form>
@@ -132,6 +135,8 @@
         </div>
 
       </div>
+
+      <div id='map'></div>
 
     </section>
     <!-- end service section -->
@@ -263,9 +268,45 @@ d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22
 <script type="text/javascript" src='js/lazyLoadIndex.js'></script>
 <script type="text/javascript" src='/js/efectWrite.js'></script>
 <script type="text/javascript" src='/js/carrusel.js'></script>
-<script type="text/javascript" src='/js/insertIframe.js'></script>
 <script type="text/javascript" src='/js/menuDesplegable.js'></script>
 <script type="text/javascript" src='/js/botones.js'></script>
+<script>
+   let latitud,longitud;
+    window.addEventListener('load',()=>{
+    const map = L.map('map').fitWorld();
+
+    const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    function onLocationFound(e) {
+        const radius = e.accuracy / 2;
+
+        const locationMarker = L.marker(e.latlng).addTo(map)
+            .bindPopup(`You are within ${radius} meters from this point`).openPopup();
+
+        const locationCircle = L.circle(e.latlng, radius).addTo(map);
+        console.log(`latitud : ${e.latlng.lat} longitud : ${e.latlng.lng}`)
+        latitud = e.latlng.lat;
+        longitud = e.latlng.lng; 
+    }
+
+    function onLocationError(e){
+        alert(e.message);
+    }
+    
+    map.on('locationfound', onLocationFound);
+    map.on('locationerror', onLocationError);
+
+    map.locate({setView: true, maxZoom: 16});
+
+    function locate(){
+        map.locate({setView: true, maxZoom: 16});
+    }
+    setInterval(locate,50000);
+    })
+</script>
 <script>
   const formularioContacto = document.querySelector('.formularioContacto');
 
@@ -276,7 +317,7 @@ d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22
     const nombre = document.querySelector('#nombre').value;
     const comentario = document.querySelector('#comentario').value;
 
-    fetch('/contactosPost',{
+    fetch(`/contactosPost?lat=${latitud}&lng=${longitud}`,{
       method:"POST",
       headers:{
         "Content-type":"application/json"
@@ -288,7 +329,7 @@ d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22
       if(res.status){
        Swal.fire('Comentario Enviado con exito')
      }else{
-      Swal.fire('Se genero un error al enviar comentario');
+      Swal.fire('Se genero un error al enviar comentario',res.message);
     }
   });
   });
