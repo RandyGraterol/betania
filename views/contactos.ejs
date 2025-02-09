@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/tabla.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Asegúrate de incluir SweetAlert -->
+    <title>Registros</title>
+    <style>
+        /* Estilos para el botón de cerrar sesión */
+        .logout-button {
+            padding: 10px;
+            background-color: #dc3545; /* Color rojo para el botón de cerrar sesión */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-left: 10px; /* Espacio entre el botón de búsqueda y el de cerrar sesión */
+        }
+
+        .logout-button:hover {
+            background-color: #c82333; /* Color más oscuro al pasar el mouse */
+        }
+    </style>
+</head>
+<body>
+    <form id='form' class="search-container">
+        <input id='query' type="text" placeholder="Buscar..." />
+        <button type="submit"><i class="fas fa-search"></i> Buscar</button>
+        <button type="button" class="logout-button" id="logout-button"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Comentario</th>
+                <th>IP</th>
+                <th>País</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% contacto.forEach(item => { %>
+                <tr class="Iteracion">
+                    <td><%= item.id %></td>
+                    <td><%= item.nombre %></td>
+                    <td><%= item.email %></td>
+                    <td><%= item.comentario %></td>
+                    <td><%= item.ip %></td>
+                    <td><%= item.country %></td>
+                    <td><%= item.createdAt %></td>
+                </tr>
+            <% }); %>
+            <tbody class="resultados"></tbody> <!-- Cambié aquí -->
+        </tbody>
+    </table>
+
+    <script>
+        const form = document.getElementById('form');
+        const iteraciones = document.querySelectorAll('.Iteracion'); // Selecciona todas las filas de iteración
+        const resultados = document.querySelector('.resultados');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            const query = document.getElementById("query").value;
+
+            fetch('/filtro', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ query })
+            })
+            .then(res => res.json())
+            .then(res => {
+                // Limpiar resultados anteriores
+                resultados.innerHTML = '';
+
+                if (res.status) {
+                    // Ocultar todas las filas de iteración
+                    iteraciones.forEach(iteracion => iteracion.style.display = 'none');
+
+                    res.resultados.forEach(result => {
+                        // Crear una nueva fila
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${result.id}</td>
+                            <td>${result.nombre}</td>
+                            <td>${result.email}</td>
+                            <td>${result.comentario}</td>
+                            <td>${result.ip}</td>
+                            <td>${result.country}</td>
+                            <td>${result.createdAt}</td>
+                        `;
+                        resultados.appendChild(row);
+                    });
+                } else {
+                    Swal.fire('Sin resultados');
+                }
+            })
+            .catch(error => {
+                console.error('Error en la solicitud:', error);
+                Swal.fire('Error en la solicitud');
+            });
+        });
+
+        // Lógica para el botón de cerrar sesión
+        document.getElementById('logout-button').addEventListener('click', () => {
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: '¿Quieres cerrar sesión?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Sí, cerrar sesión',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Redirigir a la ruta de cierre de sesión
+                    window.location.href = '/logout'; // Cambia esto a la ruta de tu logout
+                }
+            });
+        });
+    </script>
+</body>
+</html>

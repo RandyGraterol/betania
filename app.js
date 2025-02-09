@@ -2,6 +2,7 @@ const express = require('express');//modulo express
 const path = require('path');//camino --- rutas
 const app = express();//instancia de express
 const port = 4000;//port
+const session = require('express-session');
 const cors = require('cors');
 
 const ContactosModel = require('./models/models.js');
@@ -9,6 +10,16 @@ const ContactosModel = require('./models/models.js');
 const routes = require('./routes/router.js');
 
 app.use(express.static(path.join(__dirname,'/static')));//ruta archivos estaticos 
+
+app.use(session({
+    secret: 'mi_secreto_seguir',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { 
+      maxAge: 1000 * 60 * 60 * 2
+    }
+}));
+
 
 app.set('view engine','ejs');//motor EJS
 

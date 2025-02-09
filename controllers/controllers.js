@@ -1,14 +1,17 @@
 // controllers/contactosController.js
 const ContactosModel = require('../models/models.js');
+const UserModels = require('../models/users.js');
 const fs = require('fs');
 const axios = require('axios');
+const bcrypt = require('bcrypt');
 const nodemailer= require('nodemailer');
+
 /////////////////////////////////////////////////////////
 const transporter = nodemailer.createTransport({
   service:'Gmail',
   auth:{
-    user:'globaldorado78@gmail.com',
-    pass:'fauthesukyadpjmv'
+    user:'elrandygraterol@gmail.com',
+    pass:'mmtpozhyuyavswbd'
   }
 });
 
@@ -38,19 +41,19 @@ function getCurrentDateTime() {
       const url = `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${lng}&key=${apiKey}`;
       try {
          //if(!req.recaptcha.error){
-         const response = await axios.get(url);
+       const response = await axios.get(url);
 
-         if (response.data.results.length > 0) {
-           country = response.data.results[0].components.country;
+       if (response.data.results.length > 0) {
+         country = response.data.results[0].components.country;
     // Continuar con la lógica
-        }else{
-          console.log('no se pudo obtener pais de origen');
-          return res.status(400).json({ message: 'No se encontraron resultados para las coordenadas proporcionadas.',status:false});
-        }
-        await ContactosModel.addContact({ email,nombre,comentario,ip,country});
-        const mailOptions = {
-          from:'globaldorado78@gmail.com',
-    to: 'programacion2ais@dispostable.com',// Agrega aquí la dirección de correo a la lista de destinatarios
+       }else{
+        console.log('no se pudo obtener pais de origen');
+        return res.status(400).json({ message: 'No se encontraron resultados para las coordenadas proporcionadas.',status:false});
+      }
+      await ContactosModel.addContact({ email,nombre,comentario,ip,country});
+      const mailOptions = {
+        from:'elrandygraterol@gmail.com',
+    to:'soapdelinger@gmail.com',// Agrega aquí la dirección de correo a la lista de destinatarios
     subject: 'Un usuario a enviado un mensaje',
     text: `Datos del usuario:\n\n
            Nombre: ${nombre}\n
@@ -64,8 +67,8 @@ function getCurrentDateTime() {
   // Envío del correo electrónico
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-        console.log('Error al enviar el correo:', error);
-        return res.status(500).json({ message: 'Error al enviar el correo', status: false });
+      console.log('Error al enviar el correo:', error);
+      return res.status(500).json({ message: 'Error al enviar el correo', status: false });
     } else {
       console.log('Correo enviado:', info.response);
     }
@@ -81,8 +84,8 @@ function getCurrentDateTime() {
 /////////////////////////////////////////////////////////////////////////
 async getComentarios(req,res){
   try{
-    const comentarios = await ContactosModel.getAllContacts();
-    return res.status(200).json(comentarios);
+    const contacto = await ContactosModel.getAllContacts();
+    return res.render('contactos',{contacto});
   }catch(error){
    console.error(error.message);
    return res.status(500).json({ message: 'Error al obtener comentarios' ,status:false})
@@ -106,6 +109,86 @@ async index(req,res){
  }
 }
 ////////////////////////////////////////////////////////////////////////
+async filtro(req,res){
+  try{
+    const query = req.body.query;
+    const resultados = await ContactosModel.filtro(query);
+    if(resultados && resultados.length > 0){
+     res.json({status:true,resultados}); 
+   }else{
+     res.json({status:false});
+   }
+ }catch(error){
+  console.error(error.message);
+  res.status(500).send('Error en el servidor',error.message);
 }
+}
+////////////////////////////////////////////////////////////////////////
+async registerPost(req,res){
+  try{
+   const { username, password } = req.body;
 
-module.exports = new ContactosController();
+        // Generar un hash de la contraseña
+        const saltRounds = 10; // Número de rondas de sal
+        const password_hash = await bcrypt.hash(password, saltRounds);
+
+        // Guardar el nuevo usuario en la base de datos
+        const crear = await UserModels.registerPost({ username, password_hash });
+
+        if (crear) return res.redirect('/getRegister');
+      }catch(error){
+        console.error(error.message);
+        res.status(500).send('Error en el servidor',error.message);
+      }
+    }
+////////////////////////////////////////////////////////////////////////
+    getRegister(req,res){
+      try{
+        res.render('register');
+      }catch(error){
+        console.error(error.message);
+        res.status(500).send('Error en el servidor',error.message);
+      }
+    }
+////////////////////////////////////////////////////////////////////////
+    login(req,res){
+      try{
+        res.render('login');
+      }catch(error){
+        console.error(error.message);
+        res.status(500).send('Error en el servidor',error.message);
+      }
+
+    }
+////////////////////////////////////////////////////////////////////////
+    async loginPost(req,res){
+      try{
+       const {username,password} = req.body;
+       const userVerificado = await UserModels.loginPost({username});
+       if(!userVerificado) return res.json({status:'I',message:'Usuario no registrado'});
+       const match = await bcrypt.compare(password,userVerificado.password_hash);
+       if(!match) return res.json({status:'II',message:'Contraseña incorrecta'});
+       req.session.isClient=true;
+       req.session.username=userVerificado.username;
+       res.json({status:'III',message:'¡Login success papu!'});
+      }catch(error){//el randy 
+        console.error(error.message);
+        res.status(500).send('Error en el servidor',error.message);
+      }
+    }
+    ////////////////////////////////////////////////////////////////////
+    async logout(req,res){
+      try{
+       req.session.destroy(err=>{
+        if(err) return res.status(500).send({message:'Error al eliminar sesion de usuario'});
+        res.redirect('/login');
+       })
+      }catch(error){
+        console.error(error.message);
+        res.status(500).send('Error en el servidor',error.message);
+      }
+    }
+////////////////////////////////////////////////////////////////////////
+  }
+
+  module.exports = new ContactosController();

@@ -1,5 +1,5 @@
 // models/contactosModel.js
-const { Sequelize, DataTypes } = require('sequelize');
+const { Sequelize, DataTypes ,Op} = require('sequelize');
 const path = require('path');
 
 // Definición del modelo Contacto
@@ -29,6 +29,10 @@ const Contacto = sequelize.define('Contacto', {
   ip: {
     type: DataTypes.STRING(20),
     allowNull: false
+  },
+  country:{
+    type: DataTypes.STRING(20),
+    allowNull: false 
   }
 }, {
   timestamps: true,
@@ -66,6 +70,29 @@ class ContactosModel {
     } catch (error) {
       console.error('Error al obtener los contactos:', error);
       throw error;
+    }
+  }
+
+  async filtro(query){
+    try{
+        // Crear un objeto de condiciones para la consulta
+        const where = {};
+        // Agregar condiciones basadas en el valor ingresado
+        if (query) {
+            where[Op.or] = [
+                { nombre: { [Op.like]: `%${query}%` } }, // Filtrar por nombre
+                { email: { [Op.like]: `%${query}%` } }   // Filtrar por email
+            ];
+        }
+        // Realizar la consulta con las condiciones
+        const data = await Contacto.findAll({ where });
+        // Renderizar la vista con los resultados
+        if(data) return data;
+        return null
+        
+    }catch(error){
+    console.error('Error en busqueda:', error);
+    throw error;
     }
   }
 
