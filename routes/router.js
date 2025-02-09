@@ -11,6 +11,9 @@ router.get('/',ContactosController.index);
 router.get('/getComentarios',verify,ContactosController.getComentarios);
 router.get('/getRegister',ContactosController.getRegister);
 router.get('/login',ContactosController.login);
+router.get('/auth/google',ContactosController.auth);
+router.get('/auth/google/callback',ContactosController.callback);
+router.get('/auth/logout/',ContactosController.logouT);
 
 //rutas post 
 router.post('/contactosPost',ContactosController.add);

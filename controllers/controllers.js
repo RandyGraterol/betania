@@ -1,3 +1,4 @@
+require('dotenv').config()
 // controllers/contactosController.js
 const ContactosModel = require('../models/models.js');
 const UserModels = require('../models/users.js');
@@ -5,6 +6,22 @@ const fs = require('fs');
 const axios = require('axios');
 const bcrypt = require('bcrypt');
 const nodemailer= require('nodemailer');
+
+const ogData = {
+        title: 'Pagina web programacion',
+        type: 'website',
+        image: 'https://example.com/imagen.jpg',
+        url: 'https://theglobaldorado.com',
+        description: 'Pagina de la materia.'
+    };
+
+const {OAuth2Client} = require('google-auth-library');
+
+const client = new OAuth2Client(
+  process.env.GOOGLE_CLIENT_ID,
+  process.env.GOOGLE_CLIENT_SECRET,
+  process.env.GOOGLE_REDIRECT_URI
+  );
 
 /////////////////////////////////////////////////////////
 const transporter = nodemailer.createTransport({
@@ -82,6 +99,52 @@ function getCurrentDateTime() {
 }
 }
 /////////////////////////////////////////////////////////////////////////
+auth(req,res){
+  try{
+    const url = client.generateAuthUrl({
+      access_type:'offline',
+      scope:['profile','email']
+    }); 
+    res.redirect(url);
+  }catch(error){
+    console.error(error.message);
+    res.status(500).send('Error en el servidor',error.message);
+  }
+}
+/////////////////////////////////////////////////////////////////////////
+async callback(req,res){
+    const code = req.query.code;
+  try{
+
+    const {tokens} = await client.getToken(code);
+
+    const ticket = await client.verifyIdToken({
+      idToken:tokens.id_token,
+      audience:process.env.GOOGLE_CLIENT_ID
+    }); 
+
+    const payload = ticket.getPayload();
+    req.session.user ={
+      name:payload.name,
+      email:payload.email,
+      picture:payload.picture 
+    }
+    req.session.google=true;
+    res.redirect('/getComentarios');
+  }catch(error){
+    console.error(error.message);
+    res.status(500).send('Error en el servidor',error.message);
+  }
+}
+//////////////////////////////////////////////////////777////////////////
+logouT(req,res){
+  req.session.destroy(err=>{
+    if(err) return res.status(500).send('Error al cerrar sesion');
+    res.redirect('/login');
+  })
+
+}
+/////////////////////////////////////////////////////////////////////////
 async getComentarios(req,res){
   try{
     const contacto = await ContactosModel.getAllContacts();
@@ -93,13 +156,19 @@ async getComentarios(req,res){
 }
 /////////////////////////////////////////////////////////////////////////
 async index(req,res){
+  
     try{//esto sirve para intentar ejecutar codigo o instrucciones de codigo
      const ruta = 'static/imagenes';
      await fs.readdir(ruta,(err,files)=>{
       if(err){
         console.error(`Error al leer archivos`);
       }else{
-        res.render('index',{files});
+        if(req.session.user){
+          res.redirect('/getComentarios');
+        }else{
+         res.render('index',{files,ogData}); 
+        }
+        
       }
     }) 
 
@@ -182,13 +251,13 @@ async registerPost(req,res){
        req.session.destroy(err=>{
         if(err) return res.status(500).send({message:'Error al eliminar sesion de usuario'});
         res.redirect('/login');
-       })
-      }catch(error){
-        console.error(error.message);
-        res.status(500).send('Error en el servidor',error.message);
-      }
+      })
+     }catch(error){
+      console.error(error.message);
+      res.status(500).send('Error en el servidor',error.message);
     }
-////////////////////////////////////////////////////////////////////////
   }
+////////////////////////////////////////////////////////////////////////
+}
 
-  module.exports = new ContactosController();
+module.exports = new ContactosController();
